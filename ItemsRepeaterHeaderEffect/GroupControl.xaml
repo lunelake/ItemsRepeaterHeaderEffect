@@ -1,0 +1,34 @@
+<!-- Copyright (c) Microsoft Corporation and Contributors. -->
+<!-- Licensed under the MIT License. -->
+
+<UserControl
+    x:Class="ItemsRepeaterHeaderEffect.GroupControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ItemsRepeaterHeaderEffect"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    x:DefaultBindMode="OneWay"
+    mc:Ignorable="d">
+
+    <Grid Padding="0,0,0,0" Margin="20,0,20,20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="1" x:Name="ContentGrid">
+            <TextBlock Text="{x:Bind Group.Description}" TextWrapping="Wrap" Margin="0,10,0,0" />
+        </Grid>
+        <Grid Grid.Row="0" x:Name="HeaderGrid" Background="Transparent"
+                Tapped="HeaderGrid_Tapped" Loaded="HeaderGrid_Loaded" Unloaded="HeaderGrid_Unloaded">
+            <Grid.RenderTransform>
+                <CompositeTransform x:Name="CompositeTransform" />
+            </Grid.RenderTransform>
+            <Button Margin="0,20,0,0">
+                <TextBlock Text="{x:Bind Group.Header}" FontSize="25" />
+            </Button>
+        </Grid>
+       
+
+    </Grid>
+</UserControl>

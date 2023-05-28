@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "ItemsRepeaterHeaderEffect (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "ItemsRepeaterHeaderEffect (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}

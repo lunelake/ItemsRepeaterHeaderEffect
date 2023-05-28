@@ -1,0 +1,35 @@
+<!-- Copyright (c) Microsoft Corporation and Contributors. -->
+<!-- Licensed under the MIT License. -->
+
+<Page
+    x:Class="ItemsRepeaterHeaderEffect.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ItemsRepeaterHeaderEffect"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    x:DefaultBindMode="OneWay"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <ScrollViewer x:Name="ScrollViewer" x:Load="{x:Bind IsControlLoaded}" ViewChanged="ScrollViewer_ViewChanged">
+            <ItemsRepeater x:Name="ItemsRepeater" ItemsSource="{x:Bind Groups}"
+                           ElementClearing="ItemsRepeater_ElementClearing" ElementPrepared="ItemsRepeater_ElementPrepared">
+                <ItemsRepeater.ItemTemplate>
+                    <DataTemplate x:DataType="local:Group">
+                        <local:GroupControl Group="{x:Bind}" />
+                    </DataTemplate>
+                </ItemsRepeater.ItemTemplate>
+            </ItemsRepeater>
+        </ScrollViewer>
+        <StackPanel Orientation="Horizontal" Grid.Row="1">
+            <Button Content="Load" Click="{x:Bind LoadControl}" />
+            <Button Content="Unload" Click="{x:Bind UnloadControl}" />
+        </StackPanel>
+    </Grid>
+</Page>
